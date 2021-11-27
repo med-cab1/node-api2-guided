@@ -15,12 +15,14 @@ module.exports = {
 
 function find(query) {
   const { page = 1, limit = 2, sortby = 'id', sortdir = 'asc' } = query;
-  const offset = limit * (page - 1);
+  const offset = limit * (page - 1);// default paramaters
+  
 
+  // DaTABASE
   let rows = db('hubs')
-    .orderBy(sortby, sortdir)
-    .limit(limit)
-    .offset(offset);
+    .orderBy(sortby, sortdir)//
+    .limit(limit)// sets the limit of pages
+    .offset(offset);// skips 
 
   return rows;
 }
